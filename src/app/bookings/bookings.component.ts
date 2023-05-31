@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class BookingsComponent {
 
+  constructor() {
+  }
+
+  booking = "Shabbir Islam";
+
+  ngOnInit(): void{
+
+  }
 }
