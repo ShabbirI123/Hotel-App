@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Booking} from "../booking";
+import {Bookings} from "../mock-bookings";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-booking',
   templateUrl: './create-booking.component.html',
   styleUrls: ['./create-booking.component.css']
 })
-export class CreateBookingComponent {
+export class CreateBookingComponent implements OnInit{
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   booking: Booking = {
@@ -19,8 +21,11 @@ export class CreateBookingComponent {
     endDate: new Date()
   }
 
-  onOnInit() : void{
-
+  ngOnInit(): void {
   }
 
+  save() {
+    Bookings.push(this.booking);
+    this.router.navigate(["bookings"]);
+  }
 }

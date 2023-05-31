@@ -1,5 +1,4 @@
-import {Component} from '@angular/core';
-import {Booking} from "../booking";
+import {Component, OnInit} from '@angular/core';
 import {Bookings} from "../mock-bookings";
 
 @Component({
@@ -7,7 +6,7 @@ import {Bookings} from "../mock-bookings";
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.css']
 })
-export class BookingsComponent {
+export class BookingsComponent implements OnInit{
 
   constructor() {
   }
@@ -15,6 +14,5 @@ export class BookingsComponent {
   bookings = Bookings;
 
   ngOnInit(): void {
-
   }
 }
