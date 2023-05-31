@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Booking } from "../booking";
+import {Component} from '@angular/core';
+import {Booking} from "../booking";
+import {Bookings} from "../mock-bookings";
 
 @Component({
   selector: 'app-bookings',
@@ -11,15 +12,9 @@ export class BookingsComponent {
   constructor() {
   }
 
-  booking : Booking = {
-    id: 1,
-    name: "Shabbir Islam",
-    roomNumber: 1,
-    startDate: new Date(),
-    endDate: new Date("2023-07-21")
-  };
+  bookings = Bookings;
 
-  ngOnInit(): void{
+  ngOnInit(): void {
 
   }
 }
