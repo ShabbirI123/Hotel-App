@@ -22,7 +22,7 @@ export class CreateBookingComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    if (this.router.url == "/edit") {
+    if (this.router.url != "/create") {
       var id = Number(this.activatedRpute.snapshot.paramMap.get("id"));
 
       var bookingById = Bookings.find(booking => booking.id == id)!;
@@ -31,7 +31,23 @@ export class CreateBookingComponent implements OnInit{
   }
 
   save() {
-    Bookings.push(this.booking);
+    var bookingById = Bookings.find(booking => booking.id == this.booking.id);
+
+    if (bookingById == null || bookingById == undefined) {
+      Bookings.push(this.booking);
+    } else {
+      bookingById = this.booking;
+    }
     this.router.navigate(["bookings"]);
+  }
+
+  dateChanged($event: Event, isStart: boolean) {
+    var val = ($event.target as HTMLInputElement).value;
+
+    if (isStart){
+      this.booking.startDate = new Date(val);
+    } else {
+      this.booking.endDate = new Date(val);
+    }
   }
 }

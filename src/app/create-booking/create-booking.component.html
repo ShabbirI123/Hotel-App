@@ -25,11 +25,11 @@
       <div class="row">
         <div class="col">
           <label class="form-label">Start Date</label>
-          <input type="date" [(ngModel)] = "booking.startDate" name=startDate class="form-control">
+          <input type="date" [value] = "booking.startDate | date:'yyyy-MM-dd'" (input)="dateChanged($event, true)" name=startDate class="form-control">
         </div>
         <div class="col">
           <label class="form-label">End Date</label>
-          <input type="date" [(ngModel)] = "booking.endDate" name="endDate" class="form-control">
+          <input type="date" [value] = "booking.endDate | date:'yyyy-MM-dd'" (input)="dateChanged($event, false)" name="endDate" class="form-control">
         </div>
       </div>
     </form>
