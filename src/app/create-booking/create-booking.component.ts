@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Booking} from "../booking";
 import {Bookings} from "../mock-bookings";
-import {Router} from "@angular/router";
+import {Router,ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-create-booking',
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class CreateBookingComponent implements OnInit{
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private activatedRpute: ActivatedRoute) {
   }
 
   booking: Booking = {
@@ -22,6 +22,12 @@ export class CreateBookingComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    if (this.router.url == "/edit") {
+      var id = Number(this.activatedRpute.snapshot.paramMap.get("id"));
+
+      var bookingById = Bookings.find(booking => booking.id == id)!;
+      this.booking = bookingById;
+    }
   }
 
   save() {
