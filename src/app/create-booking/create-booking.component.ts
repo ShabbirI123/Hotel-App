@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Booking} from "../booking";
-import {Bookings} from "../mock-bookings";
 import {Router,ActivatedRoute} from "@angular/router";
+import {BookingService} from "../booking.service";
 
 @Component({
   selector: 'app-create-booking',
@@ -10,7 +10,7 @@ import {Router,ActivatedRoute} from "@angular/router";
 })
 export class CreateBookingComponent implements OnInit{
 
-  constructor(private router: Router, private activatedRpute: ActivatedRoute) {
+  constructor(private router: Router, private activatedRpute: ActivatedRoute, private bookingsService:BookingService) {
   }
 
   booking: Booking = {
@@ -25,18 +25,18 @@ export class CreateBookingComponent implements OnInit{
     if (this.router.url != "/create") {
       var id = Number(this.activatedRpute.snapshot.paramMap.get("id"));
 
-      var bookingById = Bookings.find(booking => booking.id == id)!;
+      var bookingById = this.bookingsService.getBookingById(id);
       this.booking = bookingById;
     }
   }
 
   save() {
-    var bookingById = Bookings.find(booking => booking.id == this.booking.id);
+    var bookingById = this.bookingsService.getBookingById(this.booking.id);
 
-    if (bookingById == null || bookingById == undefined) {
-      Bookings.push(this.booking);
+    if (bookingById == null) {
+      this.bookingsService.addBooking(bookingById);
     } else {
-      bookingById = this.booking;
+      this.bookingsService.updateBooking(this.booking);
     }
     this.router.navigate(["bookings"]);
   }
