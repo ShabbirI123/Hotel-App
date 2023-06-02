@@ -25,19 +25,15 @@ export class CreateBookingComponent implements OnInit{
     if (this.router.url != "/create") {
       var id = Number(this.activatedRpute.snapshot.paramMap.get("id"));
 
-      var bookingById = this.bookingsService.getBookingById(id);
-      this.booking = bookingById;
+      this.bookingsService.getBookingById(id).subscribe((result) =>{
+        this.booking = result;
+      });
     }
   }
 
   save() {
-    var bookingById = this.bookingsService.getBookingById(this.booking.id);
+    this.bookingsService.addBooking(this.booking).subscribe();
 
-    if (bookingById == null) {
-      this.bookingsService.addBooking(bookingById);
-    } else {
-      this.bookingsService.updateBooking(this.booking);
-    }
     this.router.navigate(["bookings"]);
   }
 
