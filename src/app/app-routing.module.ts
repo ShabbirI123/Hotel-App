@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {BookingsComponent} from "./bookings/bookings.component";
 import {CreateBookingComponent} from "./create-booking/create-booking.component";
+import {EventSignUpComponent} from "./event-sign-up/event-sign-up.component";
 
 const routes: Routes = [
   {
@@ -12,6 +13,9 @@ const routes: Routes = [
   },
   {
     path: "edit/:id", component: CreateBookingComponent
+  },
+  {
+    path: "events", component: EventSignUpComponent
   },
   {
     path: "", redirectTo: "bookings", pathMatch: "full"

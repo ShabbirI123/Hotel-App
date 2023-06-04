@@ -10,12 +10,14 @@ import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
 
 import {FormsModule} from "@angular/forms";
+import { EventSignUpComponent } from './event-sign-up/event-sign-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookingsComponent,
-    CreateBookingComponent
+    CreateBookingComponent,
+    EventSignUpComponent
   ],
   imports: [
     BrowserModule,
