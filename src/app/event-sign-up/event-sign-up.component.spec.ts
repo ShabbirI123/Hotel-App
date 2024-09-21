@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms'; // Import FormsModule for template-driven forms
 import { EventSignUpComponent } from './event-sign-up.component';
 
 describe('EventSignUpComponent', () => {
@@ -8,7 +8,8 @@ describe('EventSignUpComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EventSignUpComponent]
+      imports: [FormsModule], // Add FormsModule to provide ngForm
+      declarations: [EventSignUpComponent],
     });
     fixture = TestBed.createComponent(EventSignUpComponent);
     component = fixture.componentInstance;
